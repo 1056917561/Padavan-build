@@ -39,6 +39,8 @@ jobs:
         cd /opt/padavan/toolchain-mipsel
         sudo ./clean_sources
         sudo ./build_toolchain
+        sudo ./build_toolchain-3.0.x
+        sudo ./build_toolchain-3.4.x
     
     - name: Build Firmware
       env:
