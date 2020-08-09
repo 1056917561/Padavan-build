@@ -18,7 +18,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04 
+    runs-on: ubuntu-14.04 
     
 
     steps:
@@ -34,13 +34,12 @@ jobs:
     - name: Clone source code
       run: |
         cd /opt
-        sudo git clone https://bitbucket.org/padavan/rt-n56u.git 
+        sudo git clone https://github.com/1056917561/padavan.git 
         mkdir -p /opt/images/
         cd /opt/rt-n56u/toolchain-mipsel
         sudo ./clean_sources
         sudo ./build_toolchain
-        sudo ./build_toolchain_3.0.x
-        sudo ./build_toolchain_3.4.x
+    
     - name: Build Firmware
       env:
         TNAME: ac54u_base
