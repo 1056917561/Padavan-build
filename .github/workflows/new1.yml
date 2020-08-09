@@ -36,10 +36,12 @@ jobs:
         cd /opt
         sudo git clone https://github.com/1056917561/padavan.git 
         mkdir -p /opt/images/
+    - name: build_toolchain
+      run: |
         cd /opt/padavan/toolchain-mipsel
         sudo ./clean_sources
-        sudo ./build_toolchain
-        sudo ./build_toolchain-3.0.x
+        #sudo ./build_toolchain
+        #sudo ./build_toolchain-3.0.x
         sudo ./build_toolchain-3.4.x
     
     - name: Build Firmware
@@ -58,6 +60,8 @@ jobs:
         
         sudo ./clear_tree
         sudo ./build_firmware
+    - name: copy file
+      run: |
         sudo mv -f images/*.trx /opt/images/
     - name : Upload packages
       uses: actions/upload-artifact@master
