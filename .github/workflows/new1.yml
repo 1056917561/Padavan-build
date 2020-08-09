@@ -41,9 +41,9 @@ jobs:
         cd /opt/rt-n56u/toolchain-mipsel
         sudo ./clean_sources
         sudo ./build_toolchain
-    - name: build_toolchain-3.0.x
-      run: |
-        sudo ./build_toolchain-3.0.x
+    #- name: build_toolchain-3.0.x
+     # run: |
+      #  sudo ./build_toolchain-3.0.x
     - name: build_toolchain-3.4.x
       run: |
         sudo ./build_toolchain-3.4.x
