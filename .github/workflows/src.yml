@@ -1,5 +1,5 @@
 #打包源码 - -#
-name: Build Padavan-new1
+name: Build Padavan-src
 
 on: 
   release:
