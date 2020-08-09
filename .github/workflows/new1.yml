@@ -34,11 +34,11 @@ jobs:
     - name: Clone source code
       run: |
         cd /opt
-        sudo git clone https://github.com/1056917561/padavan.git 
+        sudo git clone https://github.com/1056917561/padavan.git rt-n56u
         mkdir -p /opt/images/
     - name: build_toolchain
       run: |
-        cd /opt/padavan/toolchain-mipsel
+        cd /opt/rt-n56u/toolchain-mipsel
         sudo ./clean_sources
         #sudo ./build_toolchain
         #sudo ./build_toolchain-3.0.x
@@ -48,7 +48,7 @@ jobs:
       env:
         TNAME: n56ub1_base
       run: |
-        cd /opt/padavan/trunk
+        cd /opt/rt-n56u/trunk
        
         if [ ! -f configs/templates/$TNAME.config ] ; then
         echo "configs/templates/$TNAME.config not found "
