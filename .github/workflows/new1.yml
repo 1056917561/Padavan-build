@@ -32,8 +32,10 @@ jobs:
       run: |
         git clone https://bitbucket.org/padavan/rt-n56u.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
-        sh dl_toolchain.sh
-        mkdir -p /opt/images/
+        sudo ./clean_sources
+        sudo ./build_toolchain
+        sudo ./build_toolchain_3.0.x
+        sudo ./build_toolchain_3.4.x
     - name: Build Firmware
       env:
         TNAME: ac54u_base
