@@ -46,7 +46,8 @@ jobs:
       #  sudo ./build_toolchain-3.0.x
     - name: build_toolchain-3.4.x
       run: |
-        sudo ./build_toolchain-3.4.x
+        echo "hello"
+        #sudo ./build_toolchain-3.4.x
     
     - name: Build Firmware
       env:
