@@ -9,6 +9,8 @@ on:
     - 'v*'
     branches: a
       - master
+    paths:
+      - '.yml'
 #  schedule:
 #    - cron: 0 8 * * 5
   watch:
