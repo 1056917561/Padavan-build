@@ -36,10 +36,9 @@ jobs:
         cd /opt
         sudo git clone https://bitbucket.org/padavan/rt-n56u.git 
        
-        sudo mv -f rt-n56u/* /opt/images/
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: always()
       with:
         name: Padavan-packages-src
-        path: /opt/images
+        path: /opt/rt-n56u
