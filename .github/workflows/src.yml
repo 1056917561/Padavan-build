@@ -30,15 +30,15 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install git -y
-        
+        sudo mkdir -p /opt/images
     - name: Clone source code
       run: |
         cd /opt
         sudo git clone https://bitbucket.org/padavan/rt-n56u.git 
-       
+        sudo cp rt-nu56u/* /opt/images
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: always()
       with:
         name: Padavan-packages-src
-        path: /opt/rt-n56u
+        path: /opt/images
