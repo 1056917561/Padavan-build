@@ -31,6 +31,7 @@ jobs:
     - name: Clone source code
       run: |
         git clone https://bitbucket.org/padavan/rt-n56u.git /opt/rt-n56u
+        mkdir -p /opt/images/
         cd /opt/rt-n56u/toolchain-mipsel
         sudo ./clean_sources
         sudo ./build_toolchain
@@ -51,7 +52,7 @@ jobs:
         
         
         sudo ./clear_tree
-        sudo ./build_firmware_modify $TNAME 0
+        sudo ./build_firmware
         sudo mv -f images/*.trx /opt/images/
     - name : Upload packages
       uses: actions/upload-artifact@master
