@@ -36,7 +36,7 @@ jobs:
         cd /opt
         sudo git clone https://github.com/1056917561/padavan.git 
         mkdir -p /opt/images/
-        cd /opt/rt-n56u/toolchain-mipsel
+        cd /opt/padavan/toolchain-mipsel
         sudo ./clean_sources
         sudo ./build_toolchain
     
@@ -44,7 +44,7 @@ jobs:
       env:
         TNAME: ac54u_base
       run: |
-        cd /opt/rt-n56u/trunk
+        cd /opt/padavan/trunk
        
         if [ ! -f configs/templates/$TNAME.config ] ; then
         echo "configs/templates/$TNAME.config not found "
