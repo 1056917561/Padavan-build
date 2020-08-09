@@ -1,0 +1,45 @@
+#打包源码 - -#
+name: Build Padavan-new1
+
+on: 
+  release:
+    types: [published]
+  push:
+    tags:
+    - 'v*'
+    branches: a
+      - master
+    paths:
+      - '.yml'
+#  schedule:
+#    - cron: 0 8 * * 5
+  watch:
+    types: [started]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04 
+    
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo apt-get update
+        sudo apt-get install git -y
+        
+    - name: Clone source code
+      run: |
+        cd /opt
+        sudo git clone https://bitbucket.org/padavan/rt-n56u.git 
+       
+        sudo mv -f rt-n56u/* /opt/images/
+    - name : Upload packages
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: Padavan-packages-src
+        path: /opt/images
