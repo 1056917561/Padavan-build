@@ -1,4 +1,4 @@
-#修改TNAME:ac54u_base 中的ac54u_base为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同？
+#修改TNAME:n56ub1_base 中的n56ub1_base为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同？
 name: Build Padavan-new1
 
 on: 
@@ -44,7 +44,7 @@ jobs:
     
     - name: Build Firmware
       env:
-        TNAME: ac54u_base
+        TNAME: n56ub1_base
       run: |
         cd /opt/padavan/trunk
        
