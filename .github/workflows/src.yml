@@ -42,6 +42,7 @@ jobs:
         cd /opt/rt-n56u/toolchain-mipsel
         sudo ./clean_sources
         sudo ./build_toolchain
+        sudo ./build_toolchain_3.4.x
     - name : Clean
       run: |
         cd /opt/rt-n56u/trunk
