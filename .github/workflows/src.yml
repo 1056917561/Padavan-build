@@ -13,8 +13,8 @@ on:
       - '.yml'
 #  schedule:
 #    - cron: 0 8 * * 5
-  #watch:
-   # types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build:
@@ -24,9 +24,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: Initialization environment
-      env:
-        DEBIAN_FRONTEND: noninteractive
+    - name: Install git
       run: |
         sudo apt-get update
         sudo apt-get install git -y
@@ -35,7 +33,23 @@ jobs:
       run: |
         cd /opt
         sudo git clone https://bitbucket.org/padavan/rt-n56u.git 
-        sudo cp -r rt-n56u/* /opt/images/
+    - name: Install packages
+      run: |
+        sudo apt-get update
+        sudo apt-get install autoconf automake autopoint bison build-essential flex gawk gettext git gperf libtool pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev texinfo python-docutils
+    - name : Build toos
+      run: |
+        cd /opt/rt-n56u/toolchain-mipsel
+        sudo ./clean_sources
+        sudo ./build_toolchain
+    - name : Clean
+      run: |
+        cd /opt/rt-n56u/trunk
+        sudo ./clear_tree
+    - name : Build
+      run: |
+        sudo ./build_firmware
+        sudo mv -f images/*.trx /opt/images/
     - name : Upload packages
       uses: actions/upload-artifact@master
       if: always()
